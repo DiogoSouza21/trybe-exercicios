@@ -9,5 +9,8 @@
   },
   "keywords": [],
   "author": "Diogo",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "readline-sync": "1.4"
+  }
 }
