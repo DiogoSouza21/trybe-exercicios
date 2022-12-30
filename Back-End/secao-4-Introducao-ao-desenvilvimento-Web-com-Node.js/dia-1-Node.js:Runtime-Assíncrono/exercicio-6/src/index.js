@@ -29,14 +29,21 @@ async function getSimpsons() {
 // getSimpsonsById();
 
 // C - Crie uma função que altere o arquivo simpsons.json retirando os personagens com id 10 e 6.
-async function filterSimpsons() {
-  const simpsons = await getSimpsons();
-  const newSimpsons = simpsons.filter((simpson) => simpson.id !== '10' && simpson.id !== '6');
-  console.log(newSimpsons);
-}
-filterSimpsons();
+// async function filterSimpsons() {
+//   const simpsons = await getSimpsons();
+//   const newSimpsons = simpsons.filter((simpson) => simpson.id !== '10' && simpson.id !== '6');
+//   console.log(newSimpsons);
+// }
+// filterSimpsons();
 
 // D - Crie uma função que leia o arquivo simpsons.json e crie um novo arquivo, chamado simpsonFamily.json, contendo as personagens com id de 1 a 4.
+async function createSimpsonsFamily() {
+  const simpsons = await getSimpsons();
+  const arrSimpsonsIds = [1, 2, 3, 4];
+  const simpsonsFamily = simpsons.filter((simpson) => arrSimpsonsIds.includes(Number(simpson.id)));
+  console.log(simpsonsFamily);
+}
+createSimpsonsFamily();
 
 // E - Crie uma função que adicione ao arquivo simpsonFamily.json o personagem Nelson Muntz.
 
