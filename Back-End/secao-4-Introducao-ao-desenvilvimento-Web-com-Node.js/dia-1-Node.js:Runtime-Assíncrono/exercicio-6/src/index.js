@@ -47,12 +47,21 @@ async function getSimpsons(archive) {
 // createSimpsonsFamily();
 
 // E - Crie uma função que adicione ao arquivo simpsonFamily.json o personagem Nelson Muntz.
-async function addSimpsonToFamily() {
-  const family = await getSimpsons('simpsonsFamily');
-  const newFamily = [...family, {id: "5", name: "Nelson Muntz"}];
-  await fs.writeFile('./src/simpsonsFamily.json', JSON.stringify(newFamily));
-  console.log(newFamily);
-}
-addSimpsonToFamily();
+// async function addSimpsonToFamily() {
+//   const family = await getSimpsons('simpsonsFamily');
+//   const newFamily = [...family, {id: "5", name: "Nelson Muntz"}];
+//   await fs.writeFile('./src/simpsonsFamily.json', JSON.stringify(newFamily));
+//   console.log(newFamily);
+// }
+// addSimpsonToFamily();
 
 // F - Crie uma função que substitua o personagem Nelson Muntz pela personagem Maggie Simpson no arquivo simpsonFamily.json.
+async function replaceSimpson() {
+  const family = await getSimpsons('simpsonsFamily');
+  const index = family.findIndex((t) => t.name == 'Nelson Muntz');
+  const newMember = {id: (index+1).toString(), name: 'Maggie Simpson'};
+  const newFamily = family.filter((simpson) => simpson.name !== 'Nelson Muntz');
+  newFamily.splice(index, 0, newMember);
+  await fs.writeFile('./src/simpsonsFamily.json', JSON.stringify(newFamily));
+}
+replaceSimpson();
