@@ -1,6 +1,6 @@
 const readline = require('readline-sync');
 
-const pesoI = () => readline.question('Insira o peso em kilograma: ');
-const alturaI = () => readline.question('Insira a altura em metros: ');
+const weightI = () => readline.question('Insira o peso em kilograma: ');
+const heightI = () => readline.question('Insira a altura em metros: ');
 
-module.exports = { pesoI, alturaI };
+module.exports = { weightI, heightI };
