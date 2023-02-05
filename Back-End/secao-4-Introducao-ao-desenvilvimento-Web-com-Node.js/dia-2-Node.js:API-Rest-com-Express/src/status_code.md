@@ -1,0 +1,5 @@
+200 "OK". É o código que é entregue quando a página ou um recurso age exatamente da maneira esperada.
+201 "Criado". O servidor cumpriu o pedido do navegador e, como resultado, criou um novo recurso. Utilizado no método POST para cadastrar um filme.
+204 "Sem conteúdo". Significa que o servidor processou a solicitação com sucesso, mas não devolve nenhum conteúdo. Utilizado no método DELETE quando um filme é excluído.
+404 "O recurso solicitado não foi encontrado". Significa que o recurso solicitado não existe. Utilizado como middleware na validação do ID quando o id não faz parte da lista de filmes.
+500 "Houve um erro no servidor e o pedido não pôde ser completado". É um código genérico que significa simplesmente “erro interno do servidor”. É utilizado no catch do try/catch para tratamento de erro interno.
