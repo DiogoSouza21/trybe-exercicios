@@ -1,14 +1,14 @@
 const express = require('express');
 const movieRouter = express.Router();
 const readFile = require('../helpers/fs/readFile');
-const writeFile = require('../helpers/fs/writeFile')
+const writeFile = require('../helpers/fs/writeFile');
+const verificationId = require('../middleware/verificationId');
 
-movieRouter.get('/:id', async (req, res) => {
+movieRouter.get('/:id', verificationId, async (req, res) => {
   try {
     const { id } = req.params;
     const movies = await readFile();
     const movieSearch = movies.find((movie) => movie.id === Number(id));
-    if(!movieSearch) return res.status(404).json({ message: 'Movie not found'});
     return res.status(200).json(movieSearch);
   } catch (err) {
     return res.status(500).json({ message: err.message });
@@ -41,7 +41,7 @@ movieRouter.post('/', async (req, res) => {
   }
 });
 
-movieRouter.put('/:id', async (req, res) => {
+movieRouter.put('/:id', verificationId, async (req, res) => {
   try {
     const { id } = req.params;
     const { movie, price } = req.body;
@@ -54,7 +54,19 @@ movieRouter.put('/:id', async (req, res) => {
     };
     const allMovies = JSON.stringify([...movieFilter, newMovie]);
     await writeFile(allMovies);
-    return res.status(200).json();
+    return res.status(200).json(allMovies);
+  } catch (err) {
+    return res.status(500).json({ message: err.message });
+  }
+});
+
+movieRouter.delete('/:id', verificationId, async (req, res) => {
+  try {
+    const movies = await readFile();
+    const { id } = req.params;
+    const newMovies = movies.filter((movie) => movie.id !== Number(id));
+    await writeFile(JSON.stringify(newMovies));
+    return res.status(200).json(newMovies);
   } catch (err) {
     return res.status(500).json({ message: err.message });
   }
