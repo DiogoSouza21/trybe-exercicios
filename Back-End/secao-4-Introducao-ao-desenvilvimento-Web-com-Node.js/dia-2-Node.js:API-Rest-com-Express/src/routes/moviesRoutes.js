@@ -41,4 +41,23 @@ movieRouter.post('/', async (req, res) => {
   }
 });
 
+movieRouter.put('/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { movie, price } = req.body;
+    const movies = await readFile();
+    const movieFilter = movies.filter((movie) => movie.id !== Number(id));
+    const newMovie = {
+      id: Number(id),
+      movie,
+      price
+    };
+    const allMovies = JSON.stringify([...movieFilter, newMovie]);
+    await writeFile(allMovies);
+    return res.status(200).json();
+  } catch (err) {
+    return res.status(500).json({ message: err.message });
+  }
+});
+
 module.exports = movieRouter;
