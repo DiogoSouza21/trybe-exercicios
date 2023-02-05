@@ -4,6 +4,20 @@ const readFile = require('../helpers/fs/readFile');
 const writeFile = require('../helpers/fs/writeFile');
 const verificationId = require('../middleware/verificationId');
 
+movieRouter.get('/search', async (req, res) => {
+  try {
+    const { q } = req.query;
+    const movies = await readFile();
+    if (q) {
+      const filteredMovies = movies.filter((e) => e.movie.includes(q));
+      return res.status(200).json(filteredMovies);
+    }
+    return res.status(200).end();
+  } catch (err) {
+    return res.status(500).json({ message: err.message });
+  }
+});
+
 movieRouter.get('/:id', verificationId, async (req, res) => {
   try {
     const { id } = req.params;
