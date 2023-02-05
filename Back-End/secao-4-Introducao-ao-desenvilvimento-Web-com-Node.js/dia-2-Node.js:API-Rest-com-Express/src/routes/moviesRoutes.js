@@ -54,7 +54,19 @@ movieRouter.put('/:id', async (req, res) => {
     };
     const allMovies = JSON.stringify([...movieFilter, newMovie]);
     await writeFile(allMovies);
-    return res.status(200).json();
+    return res.status(200).json(allMovies);
+  } catch (err) {
+    return res.status(500).json({ message: err.message });
+  }
+});
+
+movieRouter.delete('/:id', async (req, res) => {
+  try {
+    const movies = await readFile();
+    const { id } = req.params;
+    const newMovies = movies.filter((movie) => movie.id !== Number(id));
+    await writeFile(JSON.stringify(newMovies));
+    return res.status(200).json(newMovies);
   } catch (err) {
     return res.status(500).json({ message: err.message });
   }
