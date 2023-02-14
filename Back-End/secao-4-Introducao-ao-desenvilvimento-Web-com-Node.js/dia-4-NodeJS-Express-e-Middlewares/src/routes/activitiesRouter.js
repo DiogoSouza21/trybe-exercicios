@@ -5,6 +5,7 @@ const priceValidation = require('../middlewares/priceValidation');
 const descriptionValidation = require('../middlewares/descriptionValidation');
 const createdAt = require('../middlewares/createdAtValidation');
 const ratingValidation = require('../middlewares/ratingValidation');
+const difficultyValidation = require('../middlewares/difficultyValidation');
 
 const router = express.Router();
 
@@ -14,6 +15,7 @@ router.post('/',
   descriptionValidation,
   createdAt,
   ratingValidation,
+  difficultyValidation,
   (_req, res, next) => {
     try {
       res.status(201).json({ message: 'Atividade cadastrada com sucesso!' });
