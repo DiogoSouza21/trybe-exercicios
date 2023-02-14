@@ -1,0 +1,23 @@
+{
+  "name": "dia-4-nodejs-_-express-e-middlewares",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node .",
+    "dev": "nodemon ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "crypto-js": "4.0.0",
+    "express": "4.17.1",
+    "express-rescue": "1.1.30"
+  },
+  "devDependencies": {
+    "eslint": "6.8.0",
+    "eslint-config-trybe-backend": "1.0.1",
+    "nodemon": "2.0.15"
+  }
+}
