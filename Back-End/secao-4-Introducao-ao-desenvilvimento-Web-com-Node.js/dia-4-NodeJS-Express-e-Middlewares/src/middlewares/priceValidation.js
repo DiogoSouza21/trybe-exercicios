@@ -1,9 +1,6 @@
 const priceValidation = (req, res, next) => {
   try {
     const { price } = req.body;
-    // console.log(`1º caso: Chave price ñ existe ${price === undefined}`);
-    // console.log(`2º caso: Price menor que 0 ${price < 0}`);
-    // console.log(`3º caso: Campo price sem nada ${price}`);
     
     if(price === undefined) return res.status(404).json({ message: 'Chave "price" não encontrada' });
 
