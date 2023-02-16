@@ -2,6 +2,8 @@ const express = require('express');
 
 const allValidations = require('../middlewares/allValidations');
 
+// const path = '../database/activitiesDb.json';
+
 const router = express.Router();
 
 router.post('/', allValidations, (_req, res) => {

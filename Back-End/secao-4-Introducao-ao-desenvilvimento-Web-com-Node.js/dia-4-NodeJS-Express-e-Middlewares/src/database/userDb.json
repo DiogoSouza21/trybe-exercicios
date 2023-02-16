@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "token": "080014ab65b2879a",
+    "email": "email@email.com",
+    "password": "password",
+    "firstName": "Xablau",
+    "phone": "12345-6789"
+  },
+  {
+    "id": 2,
+    "token": "160b59b665761688",
+    "email": "diogo@outlook.com",
+    "password": "root",
+    "firstName": "Diogo",
+    "phone": "98765-4321"
+  }
+]
