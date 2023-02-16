@@ -1,4 +1,4 @@
-const nameVerification = (req, res, next) => {
+const nameVerification = (req, res) => {
   const { name } = req.body;
   if(name === undefined) return res.status(404).json({ message: 'Chave "name" não encontrada' });
   
@@ -7,8 +7,6 @@ const nameVerification = (req, res, next) => {
   if(name.length < 4) {
     return res.status(400).json({ "message": "O campo name deve ter pelo menos 4 caracteres" });
   }
-  
-  next();
 };
 
 module.exports = nameVerification;

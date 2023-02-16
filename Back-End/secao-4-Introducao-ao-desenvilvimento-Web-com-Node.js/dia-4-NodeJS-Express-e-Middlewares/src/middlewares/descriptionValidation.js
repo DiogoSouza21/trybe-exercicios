@@ -1,4 +1,4 @@
-const descriptionValidation = (req, res, next) => {
+const descriptionValidation = (req, res) => {
   try {
     const { description } = req.body;
     
@@ -21,8 +21,6 @@ const descriptionValidation = (req, res, next) => {
   } catch (err) {
     return res.status(500).json({ message: err.message });
   }
-
-  next();
 }
 
 module.exports = descriptionValidation;

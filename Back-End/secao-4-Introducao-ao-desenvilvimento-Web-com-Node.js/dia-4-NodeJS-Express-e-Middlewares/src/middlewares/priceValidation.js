@@ -1,4 +1,4 @@
-const priceValidation = (req, res, next) => {
+const priceValidation = (req, res) => {
   try {
     const { price } = req.body;
     
@@ -11,7 +11,6 @@ const priceValidation = (req, res, next) => {
   } catch (err) {
     return res.status(500).json({ message: err.message });
   }
-  next();
 };
 
 module.exports = priceValidation;
