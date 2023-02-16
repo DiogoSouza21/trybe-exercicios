@@ -1,4 +1,4 @@
-const difficultyValidation = (req, res, _next) => {
+const difficultyValidation = (req, res) => {
   try {
     const { description: { difficulty }} = req.body;
     const arrDifficulty = ['Fácil', 'Médio', 'Difícil'];
@@ -9,8 +9,6 @@ const difficultyValidation = (req, res, _next) => {
   } catch (err) {
     return res.status(500).json({ message: err.message });
   }
-
-  // next();
 }
 
 module.exports = difficultyValidation;
